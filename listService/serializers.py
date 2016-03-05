@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from .models import ListElement
+from .models import ListElement, ShopList
 from rest_framework import serializers
 
 
@@ -20,6 +20,10 @@ class ListElementSerializer(serializers.ModelSerializer):
         model = ListElement
         fields = ('__all__')
 
+class ShopListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShopList
+        fields = ('shopList_name')
 
 
 
