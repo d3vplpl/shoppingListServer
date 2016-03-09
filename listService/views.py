@@ -31,7 +31,6 @@ def element_list(request, format=None):
 
 @api_view(['DELETE', 'GET'])
 def element_detail(request, pk):
-
     try:
         el_detail = ListElement.objects.get(pk=pk)
     except ListElement.DoesNotExist:
@@ -46,3 +45,15 @@ def element_detail(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+@api_view(['GET', 'DELETE'])
+def element_detail_by_name(request, item_name):
+    try:
+        el_detail = ListElement.objects.get(item_name=item_name)
+    except ListElement.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = ListElementSerializer(el_detail)
+        return Response(serializer.data)
+    if request.method == 'DELETE':
+        el_detail.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)

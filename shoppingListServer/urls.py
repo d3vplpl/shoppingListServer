@@ -23,6 +23,8 @@ from listService import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^shopping_list/$', views.element_list),
-    url(r'^shopping_list/(?P<pk>[0-9]+)/$', views.element_detail)
+    url(r'^shopping_list/(?P<pk>[0-9]+)/$', views.element_detail),
+    url(r'^shopping_list/get/(?P<item_name>.+)$', views.element_detail_by_name),
+    url(r'^shopping_list/delete/(?P<item_name>.+)$', views.element_detail_by_name),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
