@@ -19,11 +19,14 @@ class ListElementSerializer(serializers.ModelSerializer):
     class Meta:
         model = ListElement
         fields = ('__all__')
+        #serialized_obj = serializers.serialize('json', [ListElement, ])
+
 
 class ShopListSerializer(serializers.ModelSerializer):
+    list_elements = ListElementSerializer(many=True)
     class Meta:
         model = ShopList
-        fields = ('shopList_name')
+        fields = ('shopList_name', 'list_elements')
 
 
 

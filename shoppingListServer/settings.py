@@ -43,7 +43,9 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSIONS_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_RENDERER_CLASSES': ('listService.renderers.ListWrappingJSONRenderer',
+                                 'rest_framework.renderers.BrowsableAPIRenderer'),
 }
 
 MIDDLEWARE_CLASSES = [
